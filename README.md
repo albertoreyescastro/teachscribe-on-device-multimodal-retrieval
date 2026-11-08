@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/user-attachments/files/34107666/TeachScribe_On_Device_Multimodal_Retrieval_Public_Engineering_Case_Study_v2.pdf"><img src="docs/readme/button-report.svg" height="42" alt="Engineering report" /></a>&nbsp;
   <a href="https://albertoreyescastro.github.io"><img src="docs/readme/button-portfolio-wide.svg" height="42" alt="Portfolio" /></a>&nbsp;
-  <a href="https://www.linkedin.com/in/alberto-reyes-ba5546238"><img src="docs/readme/button-linkedin.svg" height="42" alt="LinkedIn" /></a>
+  <a href="https://www.linkedin.com/in/albertoreyescastro"><img src="docs/readme/button-linkedin.svg" height="42" alt="LinkedIn" /></a>
 </p>
 
 <p align="center">
@@ -119,4 +119,4 @@ I designed, built, measured and delivered the retrieval prototype. Post-delivery
 ---
 
 **Alberto Reyes Castro · Applied AI Engineer · London, UK**  
-[Portfolio](https://albertoreyescastro.github.io) · [GitHub](https://github.com/albertoreyescastro) · [LinkedIn](https://www.linkedin.com/in/alberto-reyes-ba5546238)
+[Portfolio](https://albertoreyescastro.github.io) · [GitHub](https://github.com/albertoreyescastro) · [LinkedIn](https://www.linkedin.com/in/albertoreyescastro)
