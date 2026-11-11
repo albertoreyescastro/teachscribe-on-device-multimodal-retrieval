@@ -42,7 +42,7 @@ The script uses only the Python standard library and recomputes the headline sus
 | Public engineering case-study PDF v2 | `85e72a451426c4a52917521015ff71ffcfa95ccf15a827c80e878451e72c0fd7` |
 | Narrated technical deep-dive MP4 | `4bee6f67bdc46b14b25141c12c4b48379eb67eb7a5098a4a4651ad6f74188539` |
 
-The video hash is the canonical final MP4 independently cross-checked during the publication audit. The PDF v2 is the audited 26-page public report uploaded as a GitHub attachment and linked from the README.
+The video hash is the canonical final MP4 independently cross-checked during the publication audit. The PDF v2 is the audited 26-page public report stored in this repository at [`report/TeachScribe_On_Device_Multimodal_Retrieval_Public_Engineering_Case_Study_v2.pdf`](../report/TeachScribe_On_Device_Multimodal_Retrieval_Public_Engineering_Case_Study_v2.pdf) and linked from the README.
 
 ## Public evidence
 
