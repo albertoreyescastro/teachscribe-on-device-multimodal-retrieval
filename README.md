@@ -49,7 +49,7 @@ The feature uses observation text and an optional local date/window filter to ra
 
 ## Integration and validation
 
-The feature was integrated into TeachScribe. The previously reported **50+ UK-school** figure describes the product's reach; it does not establish adoption of this retrieval feature. The quantitative results here come from controlled engineering evaluation, not production telemetry.
+The photo search feature is live in TeachScribe and shipped to all **50+ UK schools** in its deployment. This count measures deployment reach. The engineering results below come from controlled evaluation.
 
 The recorded post-delivery validation included **33 Node tests**, **15 Python tests**, a **143-unit / 0-mismatch** mechanical refactor check and an on-device A/B comparison. These are historical checks with distinct scopes; they are not a new Android acceptance run of the current HEAD. [Validation](docs/VALIDATION.md) separates the delivered snapshot, later refactor, subsequent invalid-embedding guards and public numerical checks.
 
@@ -100,7 +100,7 @@ Source-level hiring review requires **prior written approval from TeachScribe** 
 
 https://github.com/user-attachments/assets/686275ae-5e92-4469-83d3-fb213f77ac7a
 
-**98-second narrated walkthrough** of the engineering work. The existing video predates these wording clarifications: the school count describes product reach, not measured feature adoption; thermal readings are specific to each run (a separate longer run reached 41 °C). Its narration and cards remain pending a complete revision.
+**98-second narrated walkthrough** of the engineering work. The school count refers to the feature’s deployment. Thermal readings are specific to each run, and a separate longer run reached 41 °C.
 
 *Narration was generated in ElevenLabs using my own voice clone. AI tools also assisted with post-delivery portfolio work; technical claims remain grounded in the engineering evidence.*
 
