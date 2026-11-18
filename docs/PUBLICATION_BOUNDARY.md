@@ -32,4 +32,6 @@ This is therefore not an open-source release or a reimplementation. It is an eng
 
 ## Hiring review
 
-The full proprietary engineering repository exists separately and can be shared with hiring teams **on request, with TeachScribe's permission**. That private edition contains the source-level implementation, tests, validation tooling and delivery evidence referenced here; no licence to reuse the proprietary code is granted.
+Source-level access requires prior written approval from TeachScribe for the named recipients, the specific material and the intended review. Alberto should obtain that approval from Ewan or another authorised TeachScribe representative before granting repository access or sending a source archive. A hiring-team request is not approval. Until approval is recorded, use the public case study and aggregate evidence for review.
+
+Approval to inspect code does not grant a licence to reuse, copy or redistribute it. Any additional recipient or broader disclosure needs a new scope decision. This documentation records the process; it does not assert that a particular request has been approved.
