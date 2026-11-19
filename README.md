@@ -1,6 +1,20 @@
+<p align="center"><img src="docs/readme/hero.svg" width="100%" alt="TeachScribe — on-device multimodal photo retrieval" /></p>
+
 # TeachScribe · Finding the right photo on an Android tablet
 
 **Applied AI engineering case study · Alberto Reyes Castro**
+
+<p align="center">
+  <a href="report/TeachScribe_Public_Engineering_Case_Study_v4.pdf"><img src="docs/readme/button-report.svg" height="42" alt="Engineering report" /></a>&nbsp;
+  <a href="https://albertoreyescastro.github.io"><img src="docs/readme/button-portfolio-wide.svg" height="42" alt="Portfolio" /></a>&nbsp;
+  <a href="https://www.linkedin.com/in/albertoreyescastro/"><img src="docs/readme/button-linkedin.svg" height="42" alt="LinkedIn" /></a>
+</p>
+
+<p align="center">
+  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
+  <a href="docs/VALIDATION.md">Validation</a> ·
+  <a href="evidence/data/README.md">Evidence</a>
+</p>
 
 **I built and shipped on-device multimodal photo search for TeachScribe, a UK EdTech platform used in 50+ schools.** The feature reached those schools through the TeachScribe app. School-level usage metrics for photo search are pending.
 
