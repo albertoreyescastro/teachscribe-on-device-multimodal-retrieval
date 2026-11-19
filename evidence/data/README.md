@@ -8,9 +8,14 @@ From the repository root:
 
 ```bash
 python evidence/verify_stats.py
+python -m unittest discover -s evidence -p 'test_*.py' -v
 ```
 
-The verifier uses only the Python standard library and recomputes the sustained-search median/P95/drift, text-model size reduction, descriptive FP32/INT8 retrieval totals, Wilson confidence intervals and exact McNemar tests from the committed evidence. The verifier is new public portfolio tooling and contains no TeachScribe application implementation.
+The standard-library verifier recomputes every sustained-search summary field, checks FP32/INT8 results and aggregates against per-set counts, and cross-checks model-selection percentages, Wilson intervals and exact McNemar values across the CSV tables. It also checks CSV schemas, expected row keys, ordered run IDs, finite positive timing values and temporal-case structure. Rounded four-decimal rates and intervals use an absolute tolerance of 0.0000501; sustained statistics use 1e-9 ms (or percentage points for drift).
+
+The mutation suite deliberately corrupts evidence and requires each case to fail with a relevant diagnostic; intact evidence must pass. See [the validation record](../../docs/VALIDATION_2026-11-17.md) for scope and results. Both scripts are independent public portfolio tooling, not TeachScribe application source.
+
+These checks establish internal consistency of the published numerical evidence. They do not rerun inference or Android benchmarks, authenticate the original observations, validate every engineering-summary measurement, or inspect claims rendered in the README, PDF or video. Paired aggregate rows remain descriptive sums; no pooled inferential test is added for the related sets.
 
 The November [tokenizer ranking comparison](tokenizer_ranking_november.csv) adds four aggregate rows from a later desktop CPU study. The last two columns apply only to the labelled controls. The original statistics verifier covers the historical observations.
 
