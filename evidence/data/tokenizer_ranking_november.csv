@@ -1,0 +1,5 @@
+group,queries,gallery_size,same_tokens,top1_changed,top5_members_changed,top5_order_changed,legacy_labelled_hit1,candidate_labelled_hit1
+historical,110,8,110,0,0,0,,
+diagnostic,50,8,23,7,15,23,,
+descriptive,8,8,8,0,0,0,8,8
+escaped,8,8,0,0,5,8,8,8

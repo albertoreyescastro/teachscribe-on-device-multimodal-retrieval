@@ -1,6 +1,6 @@
 # Scope and limitations
 
-- The production retrieval pipeline has shipped within TeachScribe, but feature adoption has not been measured. The 50+ UK-school figure is TeachScribe deployment reach, not a claim that every school actively uses this retrieval feature.
+- Alberto delivered the feature to TeachScribe in September 2026. It shipped to the 50+ UK schools served by the platform. Feature-level adoption and classroom impact metrics are pending.
 - Device measurements come from one Huawei MediaPad M3 Lite 8 (Android 7 / ARM64) and relatively small candidate pools. They do not establish a modern-device matrix, large-library scalability or a service-level guarantee.
 - Desktop retrieval quality uses small, curated image/query sets. Hit rates are not population-accuracy estimates, and the model comparison does not establish statistical superiority on every metric.
 - A cosine score is a ranking similarity, not a calibrated probability. The system does not establish identity, learning outcomes or intentions from a photograph.

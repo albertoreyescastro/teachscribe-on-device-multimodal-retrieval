@@ -13,3 +13,5 @@ This public case study describes engineering work built with third-party models 
 TinyCLIP: Kan Wu et al., *TinyCLIP: CLIP Distillation via Affinity Mimicking and Weight Inheritance*, ICCV 2023, pp. 21970-21980.
 
 These upstream licences do not license TeachScribe's unpublished application source, private imagery or other proprietary product material.
+
+The selected [TinyCLIP checkpoint](https://huggingface.co/wkcn/TinyCLIP-ViT-39M-16-Text-19M-YFCC15M) declares MIT in its model card. The public case study distributes neither the weights nor the application. The root rights notice and the upstream notices apply to their respective material.

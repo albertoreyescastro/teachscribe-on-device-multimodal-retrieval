@@ -1,8 +1,8 @@
 # Architecture
 
-This public case study describes the **deployed retrieval architecture plus clearly marked post-delivery hardening** without publishing TeachScribe's proprietary application source code.
+This public case study describes the **delivered retrieval architecture plus clearly marked post-delivery hardening** without publishing TeachScribe's proprietary application source code.
 
-The system combines a React Native/Expo interface, local media enumeration, a CLIP-compatible tokenizer, separate text and image ONNX encoders, native Android image preprocessing, a persistent embedding cache and explicit human review. Inference and ranking run on the device. Accepting a result does not train or update the pretrained model, and this retrieval path contains no face-recognition or identity-matching stage.
+The system combines a React Native/Expo interface, local media enumeration, a CLIP-style tokenizer, separate text and image ONNX encoders, native Android image preprocessing, a persistent embedding cache and explicit human review. Inference and ranking run on the device. Accepting a result does not train or update the pretrained model, and this retrieval path contains no face-recognition or identity-matching stage.
 
 ## Retrieval flow
 
@@ -38,7 +38,7 @@ The Android preprocessing path performs bounded decoding, crop-preserving downsa
 
 Cache identity combines a model/cache version with media metadata. It is intentionally not presented as a content hash: edits that preserve every key field can evade invalidation, and model or preprocessing changes require a cache-version decision.
 
-RAM coalesces repeated work. Missing valid vectors are hydrated from SQLite; persisted rows with invalid dimensions, byte counts, non-finite values or invalid norms are rejected. **In the audited post-delivery edition, fail-closed guards also reject freshly computed non-finite or wrong-dimension embeddings before caching/ranking; the deployed snapshot predates these guards.** Valid finite 512-dimensional embeddings continue through the previous path unchanged. Successful gallery refreshes prune stale or inaccessible keys. Process restart discards sessions and RAM but preserves valid persisted vectors.
+RAM coalesces repeated work. Missing valid vectors are hydrated from SQLite; persisted rows with invalid dimensions, byte counts, non-finite values or invalid norms are rejected. **In the audited post-delivery edition, fail-closed guards also reject freshly computed non-finite or wrong-dimension embeddings before caching/ranking; the delivered snapshot predates these guards.** Valid finite 512-dimensional embeddings continue through the previous path unchanged. Successful gallery refreshes prune stale or inaccessible keys. Process restart discards sessions and RAM but preserves valid persisted vectors.
 
 ## Durable state
 
@@ -57,4 +57,24 @@ The reported search timer ends before final rendering and before diagnostic/hist
 
 ## Public/private boundary
 
-This document intentionally preserves the engineering contracts, architecture and trade-offs while omitting source-file names, implementation bodies, proprietary UI code, native-module source, implementation tests and build scripts. The full private engineering repository is available to hiring teams on request, with TeachScribe's permission. See [`PUBLICATION_BOUNDARY.md`](PUBLICATION_BOUNDARY.md).
+This document intentionally preserves the engineering contracts, architecture and trade-offs while omitting source-file names, implementation bodies, proprietary UI code, native-module source, implementation tests and build scripts. Additional technical material may be shared with TeachScribe’s approval for the particular material and recipient. See [publication scope](PUBLICATION_BOUNDARY.md).
+
+## How the refactor was checked
+
+A TypeScript Compiler API check compared declarations from the delivered orchestration logic with the split modules. It found 143 preserved units, zero mismatches and no added control flow in the checked split. Formatting had its own AST-equivalence check. The historical tablet comparison examined the top-five photo order and similarity scores for the searches compared by that run. These checks answer different questions. Neither remeasured latency on the latest revision. The invalid-vector guards came later, with separate rejection tests.
+
+## Measured scheduling, energy and temperature
+
+On the 37-candidate run, yielding to the UI about every ten candidates took 530.92 ms in total. Every 20 took 379.42 ms. A less frequent yield took 303.55 ms but raised responsiveness concerns. The 20-candidate policy was retained. Loading the image model in advance raised idle process PSS from 76.3 to 166.6 MiB, so the measured design kept lazy loading.
+
+The sustained phase averaged 2.70922 W at the battery, compared with 1.90547 W idle. Across 239 seconds and 108 completed cached searches, the incremental estimate is (2.70922 − 1.90547) × 239 / 3.6 / 108 ≈ 0.494 mWh per search. Android accounting gave about 14.9 mAh against about 14.1 mAh by the differential fuel-gauge calculation. Their roughly 5.6% difference is a cross-check of magnitude. The sustained phase reached 34–37 °C, recovery reached 39 °C and a separate longer run reached 41 °C. The recorded CPU ceilings stayed constant during the controlled load. These observations describe one tablet and workload.
+
+[Engineering measurements](../evidence/data/engineering_summary.json) · [Public report, sections 8 and 12–14](../report/TeachScribe_Public_Engineering_Case_Study_v4.pdf)
+
+## Startup, warm searches and temporal acceptance
+
+Five process starts placed the process-detected milestone between 1.72 and 1.76 s. The JavaScript main milestone ranged from 2.46 to 2.88 s. Neither timestamp measures the first visible result. Five separate warm searches took 424.93–470.21 ms. These are short reference series, separate from the sustained 108-search run.
+
+In the de-identified filtering example, the target ranked first at a cosine score of 0.2745 with 1, 3 and 14 candidates when the same-day window widened. Moving the observation three days earlier excluded the target in the two-hour window. Widening that search to 168 hours restored it to first place among 14 candidates. Candidate selection can therefore determine whether semantic ranking ever sees a relevant photo. These five cases illustrate filtering behaviour on one target.
+
+[Startup milestones](../evidence/data/startup_5_runs.csv) · [Warm runs](../evidence/data/warm_search_5_runs.csv) · [Temporal cases](../evidence/data/temporal_cases.csv)

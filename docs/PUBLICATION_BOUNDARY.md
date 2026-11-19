@@ -6,7 +6,7 @@ The publication rule is intentionally narrow: **describe and evidence the engine
 
 ## Included publicly
 
-- product/problem context and production scope;
+- product context, Android handoff and measured scope;
 - high-level and contract-level architecture;
 - model-selection methodology and aggregate results;
 - INT8/FP32 retrieval comparison;
@@ -32,4 +32,6 @@ This is therefore not an open-source release or a reimplementation. It is an eng
 
 ## Hiring review
 
-The full proprietary engineering repository exists separately and can be shared with hiring teams **on request, with TeachScribe's permission**. That private edition contains the source-level implementation, tests, validation tooling and delivery evidence referenced here; no licence to reuse the proprietary code is granted.
+Additional technical material may be shared with TeachScribe’s approval for the particular material and recipient. The public charts, architecture and numerical evidence are available directly.
+
+TeachScribe verbally authorised Alberto Reyes Castro to present this work under the TeachScribe name, including its technical documentation and case study. Published material may explain design choices, experiments, trade-offs and aggregate results within that scope. Proprietary source, confidential information and details that would materially enable reproduction of the implementation remain private.

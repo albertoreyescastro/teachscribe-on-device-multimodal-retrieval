@@ -1,6 +1,6 @@
 # Public evidence data
 
-These files are copied from the audited private engineering repository without changing the numeric observations. They contain aggregate or de-identified engineering evidence only: no classroom photos, media identifiers, filenames, exact capture dates, personal paths, credentials or linked per-query records are included.
+The historical files retain the original engineering measurements. They contain aggregate or de-identified engineering evidence only: no classroom photos, media identifiers, filenames, exact capture dates, personal paths, credentials or linked per-query records are included.
 
 ## Verify the headline statistics
 
@@ -11,6 +11,8 @@ python evidence/verify_stats.py
 ```
 
 The verifier uses only the Python standard library and recomputes the sustained-search median/P95/drift, text-model size reduction, descriptive FP32/INT8 retrieval totals, Wilson confidence intervals and exact McNemar tests from the committed evidence. The verifier is new public portfolio tooling and contains no TeachScribe application implementation.
+
+The November [tokenizer ranking comparison](tokenizer_ranking_november.csv) adds four aggregate rows from a later desktop CPU study. The last two columns apply only to the labelled controls. The original statistics verifier covers the historical observations.
 
 ## Evidence stages
 
@@ -37,4 +39,4 @@ Do not combine the following into a single accuracy or performance claim:
 
 ## Interpretation limits
 
-The image/query sets are small and curated, and the physical-device measurements come from one older Android tablet. The 50+ UK-school figure used elsewhere in the case study is deployment reach for TeachScribe, not measured adoption of this retrieval feature. Cosine similarity scores are not calibrated probabilities.
+Alberto delivered the feature to TeachScribe in September 2026. It shipped to the 50+ UK schools served by the platform. Feature-level adoption and classroom impact metrics are pending.
