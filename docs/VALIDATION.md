@@ -37,6 +37,8 @@ python evidence/verify_stats.py
 
 The script uses only the Python standard library and recomputes the headline sustained-search median/P95/drift, INT8 text-model size reduction, descriptive FP32/INT8 retrieval totals, Wilson intervals and exact McNemar values from the committed CSV/JSON evidence. It is independent portfolio verification tooling, not TeachScribe application source.
 
+Run the mutation suite with `python -m unittest discover -s evidence -p "test_verify_stats.py"`. The checks include individual November group counts against the frozen paired-run output.
+
 ## November tokenizer study
 
 The delivered TypeScript byte-pair encoder had 20 fixed reference phrases, 12 edge cases and 300 seeded strings for cross-language regression. Agreement between two ports cannot establish agreement with the official tokenizer on every input. On 50 selected difficult strings the delivered implementation matched all 77 reference token IDs on 23. A later candidate matched the reference on 400/400 complete 77-ID vectors in React Native 0.81.5 Hermes on Linux.
@@ -60,7 +62,8 @@ Both arms scored 8/8 Hit@1 in each labelled control group. Within the 50 diagnos
 
 | Edition | Status | SHA-256 |
 | --- | --- | --- |
-| [v4 · engineering case study](../report/TeachScribe_Public_Engineering_Case_Study_v4.pdf) | November release candidate in this tree. Includes the confirmed feature rollout and the desktop tokenizer study. | `b4462ac9501e78e540fa095a94ec035633b5f7d5313281e04a8137eed8b1fec2` |
+| [v5 · engineering case study](../report/TeachScribe_Public_Engineering_Case_Study_v5.pdf) | Current public case study. Includes the November study, delivery and release dates, scope of the October comparison, and status of the next Android version. | `807b84d75aab3efc5fee80485d58806f2fb2d54acfead81fb1e30c8d3b7c54b2` |
+| [v4 · engineering case study](../report/TeachScribe_Public_Engineering_Case_Study_v4.pdf) | Previous November edition, retained for historical reference. | `b4462ac9501e78e540fa095a94ec035633b5f7d5313281e04a8137eed8b1fec2` |
 | [v2 · October edition](../report/TeachScribe_On_Device_Multimodal_Retrieval_Public_Engineering_Case_Study_v2.pdf) | Published historical edition. Its APK component-size attribution is corrected in v4. | `85e72a451426c4a52917521015ff71ffcfa95ccf15a827c80e878451e72c0fd7` |
 
 Version 3 was an unpublished review draft and has been superseded. The September handoff date and the later distribution confirmation refer to distinct events. The dates and conditions of the historical benchmarks are retained.

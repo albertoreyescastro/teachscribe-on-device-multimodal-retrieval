@@ -12,5 +12,6 @@ Third-party components, model names, frameworks and upstream material remain
 subject to their own licences and notices; see THIRD_PARTY_NOTICES.md.
 
 TeachScribe Ltd. owns the proprietary application code described by this case
-study. TeachScribe may approve specific private material for review by specified
-recipients. A request does not grant access to the full private repository.
+study.
+
+With TeachScribe's permission, Alberto Reyes Castro may share the private engineering repository with hiring teams he selects, for review only. Sharing grants no licence to use, copy, modify or distribute the code.

@@ -2,10 +2,10 @@
 
 # TeachScribe · Finding the right photo on an Android tablet
 
-**Applied AI engineering case study · Alberto Reyes Castro**
+**Alberto Reyes Castro · Applied AI Engineer, On-Device Multimodal ML**
 
 <p align="center">
-  <a href="report/TeachScribe_Public_Engineering_Case_Study_v4.pdf"><img src="docs/readme/button-report.svg" height="42" alt="Engineering report" /></a>&nbsp;
+  <a href="report/TeachScribe_Public_Engineering_Case_Study_v5.pdf"><img src="docs/readme/button-report.svg" height="42" alt="Engineering report" /></a>&nbsp;
   <a href="https://albertoreyescastro.github.io"><img src="docs/readme/button-portfolio-wide.svg" height="42" alt="Portfolio" /></a>&nbsp;
   <a href="https://www.linkedin.com/in/albertoreyescastro/"><img src="docs/readme/button-linkedin.svg" height="42" alt="LinkedIn" /></a>
 </p>
@@ -13,16 +13,31 @@
 <p align="center">
   <a href="docs/ARCHITECTURE.md">Architecture</a> ·
   <a href="docs/VALIDATION.md">Validation</a> ·
-  <a href="evidence/data/README.md">Evidence</a>
+  <a href="evidence/data/README.md">Evidence</a> ·
+  <a href="docs/README.md">Documentation</a> ·
+  <a href="docs/PRIVACY.md">Privacy</a> ·
+  <a href="NOTICE.md">Notice</a>
 </p>
 
-**I built and shipped on-device multimodal photo search for TeachScribe, a UK EdTech platform used in 50+ schools.** The feature reached those schools through the TeachScribe app. School-level usage metrics for photo search are pending.
+**I built and shipped on-device multimodal photo search for TeachScribe, an Early Years education platform.** TeachScribe released photo search in its app on 19 November 2026 for the 50+ UK schools it serves. School-level usage metrics for the feature are pending.
 
-Early Years teachers write observations while they work. Finding the photo that goes with a note can mean scrolling back through a camera roll. I built an Android feature that ranks local photos against the observation and shows five suggestions. The teacher can select several or record that none match. Observation text and photos stay on the tablet during retrieval.
+Early Years teachers write observations while they work. Finding the photo that goes with a note can mean scrolling back through a camera roll. I built an Android feature that ranks local photos against the observation and shows five suggestions. The teacher can select several or record that none match. Observation text and photos stay on the tablet during retrieval. The feature uses no face recognition.
 
-I compared five pretrained vision–language models, exported the selected encoders to ONNX, implemented the Android image path and embedding cache, and measured the result on a Huawei MediaPad M3 Lite 8. **108 cached searches over 44 photos took 441 ms at the median and 459 ms at P95.** I delivered the Android handoff to TeachScribe on 29 September 2026. The measurements here come from engineering evaluations.
+I compared five pretrained vision–language models, exported the selected encoders to ONNX, implemented the Android image path and embedding cache, and measured the result on a Huawei MediaPad M3 Lite 8. **108 cached searches over 44 photos took 441 ms at the median and 459 ms at P95.** I delivered the standalone ARM64 app to TeachScribe on 29 September 2026 at the end of my full-time engineering work (June–September).
 
-[Engineering report (PDF)](report/TeachScribe_Public_Engineering_Case_Study_v4.pdf) · [Original 98-second walkthrough](https://github.com/user-attachments/assets/686275ae-5e92-4469-83d3-fb213f77ac7a) · [Results and uncertainty](docs/RETRIEVAL_QUALITY.md)
+[Engineering report (PDF)](report/TeachScribe_Public_Engineering_Case_Study_v5.pdf) · [Results and uncertainty](docs/RETRIEVAL_QUALITY.md)
+
+### Current part-time work · September 2026–present
+
+Alongside my MSc, I am developing the next version. I compared FP32 and INT8 retrieval on desktop, tested a candidate tokenizer against CLIP reference IDs and added checks for invalid embeddings. I wrote on-disk SQLite tests for a photo deleted during an active search and for recovery after interrupted writes. The requirement is to remove the deleted photo’s records while preserving the teacher’s notes and other photos.
+
+Connecting that cleanup to a confirmed deletion in the app, validating the new build on the physical tablet and completing final release tests are still ahead. The September tablet timings describe the original benchmark.
+
+## Technical deep dive
+
+https://github.com/user-attachments/assets/686275ae-5e92-4469-83d3-fb213f77ac7a
+
+**98-second narrated walkthrough** — on-device multimodal retrieval, model selection, INT8 deployment, Android optimisation, measured performance and validation.
 
 ## What it took to fit the device
 
@@ -76,7 +91,7 @@ The September benchmark used a **169.25 MiB ARM64 build on one Huawei MediaPad M
 ## What was verified, and when?
 
 - **September · Android handoff.** Physical QA on the 143.01 MiB package covered retrieval, filtering and persisted history. The sustained benchmark above used an earlier package.
-- **October · refactor.** A mechanical comparison preserved 143 original units with zero mismatches. The 28 October suite passed 33 Node and 15 Python tests. On 27 October the tablet builds returned identical Top-5 order and scores on matched searches. The comparator did not check missing, extra or duplicate records. The original exports were unavailable for a stricter replay.
+- **October · refactor.** I split the search screen into eight hooks, ten UI components and a 244-line entry screen. A TypeScript compiler API check found all 143 original code units preserved with zero mismatches during the module split. The 28 October suite passed 33 Node and 15 Python tests. On 27 October the tablet builds returned identical Top-5 order and scores on matched searches. The comparator did not check missing, extra or duplicate records. The original exports were unavailable for a stricter replay.
 - **November · tokenizer candidate.** In a CPU comparison, the original and candidate tokenizers produced identical IDs on 110 historical queries. On a fixed gallery of eight public example photos, 7/50 deliberately difficult strings changed the first-ranked image. The candidate changes behaviour. These tests establish neither universal CLIP compatibility nor a new Android validation. [Protocol, control groups and results](docs/VALIDATION.md)
 
 To recompute the published latency, model-size and retrieval statistics, run the following command from the repository root. The verifier uses standard-library Python.
@@ -85,9 +100,9 @@ To recompute the published latency, model-size and retrieval statistics, run the
 python evidence/verify_stats.py
 ```
 
-The public evidence includes the measurements, statistical summaries and this verification script. Product source, model exports, classroom media and linked records stay private. More technical material can be considered for a hiring review with TeachScribe’s approval for the specific material. [Evidence limits](docs/LIMITATIONS.md) · [Publication boundary](docs/PUBLICATION_BOUNDARY.md)
+The public evidence includes the measurements, statistical summaries and this verification script. Product source, model exports, classroom media and linked records stay private. With TeachScribe's permission, Alberto Reyes Castro may share the private engineering repository with hiring teams he selects, for review only. Sharing grants no licence to use, copy, modify or distribute the code. [Evidence limits](docs/LIMITATIONS.md) · [Publication boundary](docs/PUBLICATION_BOUNDARY.md)
 
-I continue this work part-time. School feedback and feature-level usage data will help prioritise evaluation on larger galleries and more Android devices. A larger labelled evaluation set would let us test whether domain adaptation improves retrieval over the existing baseline.
+School feedback and feature-level usage data will help prioritise evaluation on larger galleries and more Android devices. A larger labelled evaluation set would let us test whether domain adaptation improves retrieval over the existing baseline.
 
 TeachScribe describes its participation in the Department for Education’s AI Tools for Education programme and attributes programme funding to Innovate UK. This is background on the company. The feature measurements above come from my engineering evaluation. [Company statement](https://teachscribe.com/ofsted-early-years-inspections/)
 

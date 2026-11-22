@@ -41,7 +41,7 @@ These are 95% Wilson intervals for each observed hit rate. They describe samplin
 
 Exact paired McNemar tests do not reject equal marginal hit rates at the 5% level on these individual sets (p ≥ 0.25). **That is not evidence of statistical equivalence or non-inferiority**: no equivalence margin or adequately powered equivalence design was established. The observed Hard Hit@1 reduction remains relevant even though its p-value is 0.25.
 
-The 110-query total is a descriptive sum of **three partly related sets**, not 110 independent held-out trials. It has no pooled McNemar test or pooled confidence interval. Net Hit@1 changes by −2 (six losses and four gains); Hit@5 changes by −1. Agreement on 97/110 first images does not imply identical embeddings, scores or complete rankings.
+The 110-query total is a descriptive sum of **three partly related sets**, not 110 independent held-out trials. It has no pooled McNemar test or pooled confidence interval. Net Hit@1 changes by −2 (six losses and four gains). In all six losses the relevant result remained in the top three; Hit@5 changes by −1. Agreement on 97/110 first images does not imply identical embeddings, scores or complete rankings.
 
 ## Selection trade-off
 
@@ -67,5 +67,6 @@ Queries were curated with knowledge of the photographs. The sets contain 20, 60 
 | TinyCLIP 39M/16 | 83,101,185 | 17/20 | 18/20 | 1.544 | 97 | 22 |
 
 All five models saw the same Hard queries and candidates. TinyCLIP 8M/16 had the lowest observed text time and the fewest first-place hits. SigLIP matched MobileCLIP at Hit@5 but took 3.420 s for the 16 images. The selected TinyCLIP model’s 22 ms mean text time is a desktop encoder measurement.
+
 
 [Checkpoint and MIT model licence](https://huggingface.co/wkcn/TinyCLIP-ViT-39M-16-Text-19M-YFCC15M) · [CSV](../evidence/data/model_comparison.csv)
