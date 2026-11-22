@@ -1,6 +1,6 @@
 # Scope and limitations
 
-- Alberto delivered the feature to TeachScribe in September 2026. It shipped to the 50+ UK schools served by the platform. Feature-level adoption and classroom impact metrics are pending.
+- Alberto delivered the Android app on 29 September 2026. TeachScribe released photo search in its app on 19 November 2026 for the 50+ UK schools it serves. School-level usage and classroom impact metrics for the feature are pending.
 - Device measurements come from one Huawei MediaPad M3 Lite 8 (Android 7 / ARM64) and relatively small candidate pools. They do not establish a modern-device matrix, large-library scalability or a service-level guarantee.
 - Desktop retrieval quality uses small, curated image/query sets. Hit rates are not population-accuracy estimates, and the model comparison does not establish statistical superiority on every metric.
 - A cosine score is a ranking similarity, not a calibrated probability. The system does not establish identity, learning outcomes or intentions from a photograph.
@@ -12,3 +12,5 @@
 - EXIF-rotation parity, HEIC, cloud-only assets and broad format coverage were not established by the tested path.
 - The later behaviour-preserving refactor was functionally compared on-device, but the historical latency, memory, thermal and energy benchmark was not rerun on that refactored build.
 - The public case study intentionally omits application source, model binaries, APKs, signing material, private imagery and internal delivery correspondence. This limits independent replay of the original end-to-end benchmark while preserving the underlying de-identified measurements.
+
+Larger-gallery benchmarks were deferred by the product owner at handoff. Fresh-photo performance and scaling beyond the original gallery remain future measurements.

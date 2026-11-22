@@ -57,11 +57,11 @@ The reported search timer ends before final rendering and before diagnostic/hist
 
 ## Public/private boundary
 
-This document intentionally preserves the engineering contracts, architecture and trade-offs while omitting source-file names, implementation bodies, proprietary UI code, native-module source, implementation tests and build scripts. Additional technical material may be shared with TeachScribe’s approval for the particular material and recipient. See [publication scope](PUBLICATION_BOUNDARY.md).
+This document intentionally preserves the engineering contracts, architecture and trade-offs while omitting source-file names, implementation bodies, proprietary UI code, native-module source, implementation tests and build scripts. The [hiring review policy](PUBLICATION_BOUNDARY.md#hiring-review) describes access to the private engineering repository. See [publication scope](PUBLICATION_BOUNDARY.md).
 
 ## How the refactor was checked
 
-A TypeScript Compiler API check compared declarations from the delivered orchestration logic with the split modules. It found 143 preserved units, zero mismatches and no added control flow in the checked split. Formatting had its own AST-equivalence check. The historical tablet comparison examined the top-five photo order and similarity scores for the searches compared by that run. These checks answer different questions. Neither remeasured latency on the latest revision. The invalid-vector guards came later, with separate rejection tests.
+A TypeScript Compiler API check compared declarations from the 3,749-line portfolio baseline with the split modules (portfolio-baseline → refactor-split). It found 143 preserved units, zero mismatches and no added control flow in the checked split. Formatting had its own AST-equivalence check. The historical tablet comparison examined the top-five photo order and similarity scores for the searches compared by that run. These checks answer different questions. Neither remeasured latency on the latest revision. The invalid-vector guards came later, with separate rejection tests.
 
 ## Measured scheduling, energy and temperature
 
@@ -69,7 +69,7 @@ On the 37-candidate run, yielding to the UI about every ten candidates took 530.
 
 The sustained phase averaged 2.70922 W at the battery, compared with 1.90547 W idle. Across 239 seconds and 108 completed cached searches, the incremental estimate is (2.70922 − 1.90547) × 239 / 3.6 / 108 ≈ 0.494 mWh per search. Android accounting gave about 14.9 mAh against about 14.1 mAh by the differential fuel-gauge calculation. Their roughly 5.6% difference is a cross-check of magnitude. The sustained phase reached 34–37 °C, recovery reached 39 °C and a separate longer run reached 41 °C. The recorded CPU ceilings stayed constant during the controlled load. These observations describe one tablet and workload.
 
-[Engineering measurements](../evidence/data/engineering_summary.json) · [Public report, sections 8 and 12–14](../report/TeachScribe_Public_Engineering_Case_Study_v4.pdf)
+[Engineering measurements](../evidence/data/engineering_summary.json) · [Public report, sections 8 and 12–14](../report/TeachScribe_Public_Engineering_Case_Study_v5.pdf)
 
 ## Startup, warm searches and temporal acceptance
 

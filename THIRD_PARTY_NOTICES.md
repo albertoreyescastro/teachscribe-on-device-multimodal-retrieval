@@ -8,7 +8,7 @@ This public case study describes engineering work built with third-party models 
 | CLIP, OpenAI | compatible tokenisation conventions | [CLIP MIT licence](https://github.com/openai/CLIP/blob/main/LICENSE) |
 | OpenCLIP | tokenisation/preprocessing conventions | [OpenCLIP MIT licence](https://github.com/mlfoundations/open_clip/blob/main/LICENSE) |
 | Expo / 650 Industries | mobile framework used by the evaluated application | [Expo SDK 54 licence](https://github.com/expo/expo/blob/sdk-54/LICENSE) |
-| ONNX Runtime, Microsoft | local inference runtime | [ONNX Runtime licence](https://github.com/microsoft/onnxruntime/blob/v1.24.3/LICENSE) |
+| ONNX Runtime, Microsoft | local inference runtime | [ONNX Runtime licence](https://cdn.jsdelivr.net/gh/microsoft/onnxruntime@v1.24.3/LICENSE) |
 
 TinyCLIP: Kan Wu et al., *TinyCLIP: CLIP Distillation via Affinity Mimicking and Weight Inheritance*, ICCV 2023, pp. 21970-21980.
 

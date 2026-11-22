@@ -8,4 +8,4 @@
 - [Publication boundary](PUBLICATION_BOUNDARY.md)
 - [AI assistance disclosure](AI_ASSISTANCE.md)
 
-[Read the v4 review edition](../report/TeachScribe_Public_Engineering_Case_Study_v4.pdf). The [edition record](VALIDATION.md) identifies the published October v2 and superseded private draft v3.
+[Read the current v5 edition](../report/TeachScribe_Public_Engineering_Case_Study_v5.pdf). The [edition record](VALIDATION.md) identifies the published October v2 and superseded private draft v3.

@@ -32,6 +32,6 @@ This is therefore not an open-source release or a reimplementation. It is an eng
 
 ## Hiring review
 
-Additional technical material may be shared with TeachScribe’s approval for the particular material and recipient. The public charts, architecture and numerical evidence are available directly.
+With TeachScribe's permission, Alberto Reyes Castro may share the private engineering repository with hiring teams he selects, for review only. Sharing grants no licence to use, copy, modify or distribute the code. The public charts, architecture and numerical evidence are available directly.
 
 TeachScribe verbally authorised Alberto Reyes Castro to present this work under the TeachScribe name, including its technical documentation and case study. Published material may explain design choices, experiments, trade-offs and aggregate results within that scope. Proprietary source, confidential information and details that would materially enable reproduction of the implementation remain private.
