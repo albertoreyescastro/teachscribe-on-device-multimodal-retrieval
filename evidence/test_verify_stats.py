@@ -76,6 +76,10 @@ class EvidenceVerificationTests(unittest.TestCase):
             ("deeper_quality.csv", 0, "tinyclip39_hit1", "16", "FP32 matches deeper quality"),
             ("startup_5_runs.csv", 0, "js_main_ms", "1", "process precedes JS milestone"),
             ("warm_search_5_runs.csv", 0, "ranking_ms", "-1", "finite positive value"),
+            ("startup_5_runs.csv", 0, "process_detected_ms", "1850", "startup process_detected_ms: maximum"),
+            ("startup_5_runs.csv", 1, "js_main_ms", "2780", "startup js_main_ms: median"),
+            ("warm_search_5_runs.csv", 3, "total_ms", "415", "warm total_ms: minimum"),
+            ("warm_search_5_runs.csv", 1, "total_ms", "436.60", "warm total_ms: median"),
             ("temporal_cases.csv", 3, "target_rank", "1", "absent target has no result"),
             ("temporal_cases.csv", 0, "target_score", "2", "rank and cosine"),
         ]

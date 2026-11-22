@@ -41,7 +41,7 @@ These are 95% Wilson intervals for each observed hit rate. They describe samplin
 
 Exact paired McNemar tests do not reject equal marginal hit rates at the 5% level on these individual sets (p ≥ 0.25). **That is not evidence of statistical equivalence or non-inferiority**: no equivalence margin or adequately powered equivalence design was established. The observed Hard Hit@1 reduction remains relevant even though its p-value is 0.25.
 
-The 110-query total is a descriptive sum of **three partly related sets**, not 110 independent held-out trials. It has no pooled McNemar test or pooled confidence interval. Net Hit@1 changes by −2 (six losses and four gains). In all six losses the relevant result remained in the top three; Hit@5 changes by −1. Agreement on 97/110 first images does not imply identical embeddings, scores or complete rankings.
+The 110-query total is a descriptive sum of **three partly related sets**, not 110 independent held-out trials. It has no pooled McNemar test or pooled confidence interval. Net Hit@1 changes by −2 (six losses and four gains). In all six losses, a relevant result remained in the top three. Across all 110 queries, Hit@5 fell by one hit. Agreement on 97/110 first images does not imply identical embeddings, scores or complete rankings.
 
 ## Selection trade-off
 

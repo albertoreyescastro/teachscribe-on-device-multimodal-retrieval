@@ -23,11 +23,11 @@
 
 Early Years teachers write observations while they work. Finding the photo that goes with a note can mean scrolling back through a camera roll. I built an Android feature that ranks local photos against the observation and shows five suggestions. The teacher can select several or record that none match. Observation text and photos stay on the tablet during retrieval. The feature uses no face recognition.
 
-I compared five pretrained vision–language models, exported the selected encoders to ONNX, implemented the Android image path and embedding cache, and measured the result on a Huawei MediaPad M3 Lite 8. **108 cached searches over 44 photos took 441 ms at the median and 459 ms at P95.** I delivered the standalone ARM64 app to TeachScribe on 29 September 2026 at the end of my full-time engineering work (June–September).
+I compared five pretrained vision–language models, exported the selected encoders from PyTorch to ONNX, implemented the Android image path and embedding cache, and measured the result on a Huawei MediaPad M3 Lite 8. **108 cached searches over 44 photos took 441 ms at the median and 459 ms at P95.** I delivered the standalone ARM64 app to TeachScribe on 29 September 2026 at the end of my full-time engineering work (June–September).
 
 [Engineering report (PDF)](report/TeachScribe_Public_Engineering_Case_Study_v5.pdf) · [Results and uncertainty](docs/RETRIEVAL_QUALITY.md)
 
-### Current part-time work · September 2026–present
+## Current part-time work · September 2026–present
 
 Alongside my MSc, I am developing the next version. I compared FP32 and INT8 retrieval on desktop, tested a candidate tokenizer against CLIP reference IDs and added checks for invalid embeddings. I wrote on-disk SQLite tests for a photo deleted during an active search and for recovery after interrupted writes. The requirement is to remove the deleted photo’s records while preserving the teacher’s notes and other photos.
 
@@ -52,7 +52,7 @@ https://github.com/user-attachments/assets/686275ae-5e92-4469-83d3-fb213f77ac7a
 
 ![Observation text goes to a text encoder. Photos go through a cache or image encoder. Their vectors meet at cosine ranking before teacher review.](docs/figures/architecture.svg)
 
-A local date or time window can narrow the candidate pool before ranking. A TypeScript CLIP-style tokenizer produces a 77-ID input. Kotlin handles bounded image decoding and prepares 224 × 224 RGB inputs. Separate ONNX sessions produce 512-component vectors. The app ranks by cosine similarity. RAM coalesces repeated work and SQLite preserves valid image embeddings across restarts. A new or changed photo can incur decoding and image inference again.
+A local date or time window can narrow the candidate pool before ranking. I ported CLIP’s byte-level byte-pair encoding (BPE) tokenizer to TypeScript. It produces a 77-token input for the text encoder. Kotlin handles bounded image decoding and prepares 224 × 224 RGB inputs. Separate ONNX sessions produce 512-component vectors. The app ranks by cosine similarity. RAM coalesces repeated work and SQLite preserves valid image embeddings across restarts. A new or changed photo can incur decoding and image inference again.
 
 The teacher’s choice and the original search results have independent records. Reopening a search preserves the suggestions originally shown. This also makes it possible to inspect a mismatch between the model’s ranking and a teacher’s later decision. The feature does not identify children or infer learning outcomes. [Architecture and timing boundaries](docs/ARCHITECTURE.md)
 
@@ -84,6 +84,7 @@ The September benchmark used a **169.25 MiB ARM64 build on one Huawei MediaPad M
 | Image preprocessing | Earlier reference ~2.20 s. Four later observations 0.37–0.50 s each. | Different photos were used. The measurements describe the change without a paired speedup estimate. |
 | Battery-side measurement | 1.91 W idle and 2.71 W during search, about 0.49 mWh extra per search | An idle-subtracted, whole-device estimate for this workload. |
 | SoC temperature | 33 °C idle, 34–37 °C during search, 34–39 °C in recovery. A longer run peaked at 41 °C. | These ranges belong to the measured phases on this device. |
+| Stability | I observed no throttling during the controlled run. Stress-test logs showed no app crashes or application-not-responding (ANR) events. | These observations cover the benchmark device and the workloads tested. |
 | APK packaging | 169.25 MiB benchmark, 143.84 MiB earlier clean package, 143.01 MiB handoff | The net package differences are 25.41 and 26.24 MiB. They do not isolate the compressed size of a duplicated resource. |
 
 [All 108 timings](evidence/data/sustained_search_108_runs.csv) · [Five startup runs](evidence/data/startup_5_runs.csv) · [Power, memory and cold-path evidence](evidence/data/engineering_summary.json)

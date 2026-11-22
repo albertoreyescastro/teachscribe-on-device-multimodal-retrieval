@@ -128,10 +128,12 @@ def verify_november_tokenizer():
 def main():
     verify_november_tokenizer()
     sustained = read_csv("sustained_search_108_runs.csv")
+    startup = read_csv("startup_5_runs.csv")
+    warm = read_csv("warm_search_5_runs.csv")
     for name, rows, n in [
         ("sustained", sustained, 108),
-        ("startup", read_csv("startup_5_runs.csv"), 5),
-        ("warm", read_csv("warm_search_5_runs.csv"), 5),
+        ("startup", startup, 5),
+        ("warm", warm, 5),
     ]:
         check([r["run"] for r in rows] == [str(i) for i in range(1, n + 1)],
               f"{name}: ordered unique run IDs")
@@ -142,6 +144,18 @@ def main():
             if name == "startup":
                 check(float(row["process_detected_ms"]) <= float(row["js_main_ms"]),
                       "startup: process precedes JS milestone")
+    # Historical five-run series behind Architecture and sections 10–11 of the report.
+    # Keep the original millisecond precision before rounding to seconds for display.
+    for name, rows, field, low, median, high in [
+        ("startup", startup, "process_detected_ms", 1722.9, 1726.4, 1757.6),
+        ("startup", startup, "js_main_ms", 2464.1, 2855.0, 2876.1),
+        ("warm", warm, "total_ms", 424.93, 436.51, 470.21),
+    ]:
+        values = [float(row[field]) for row in rows]
+        check(min(values) == low, f"{name} {field}: minimum")
+        check(statistics.median(values) == median, f"{name} {field}: median")
+        check(max(values) == high, f"{name} {field}: maximum")
+
     times = [float(r["total_ms"]) for r in sustained]
     first20, last20 = statistics.median(times[:20]), statistics.median(times[-20:])
     actual = {
