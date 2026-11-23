@@ -19,7 +19,7 @@
   <a href="NOTICE.md">Notice</a>
 </p>
 
-**I built and shipped on-device multimodal photo search for TeachScribe, an Early Years education platform.** TeachScribe released photo search in its app on 19 November 2026 for the 50+ UK schools it serves. School-level usage metrics for the feature are pending.
+**I built and shipped TeachScribe's first on-device photo-search feature to all 50+ UK schools on its Early Years platform.** TeachScribe released the feature in its app on 19 November 2026. Feature-level usage metrics are pending.
 
 Early Years teachers write observations while they work. Finding the photo that goes with a note can mean scrolling back through a camera roll. I built an Android feature that ranks local photos against the observation and shows five suggestions. The teacher can select several or record that none match. Observation text and photos stay on the tablet during retrieval. The feature uses no face recognition.
 
